@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "morpion.h"
 
 void displayLine(morpion grid, int line)
@@ -56,6 +57,12 @@ int main(int argc, char const *argv[])
   do {
     int play;
 
+    // Print the summary
+    printf("\n");
+    printf("Summary: ");
+    display(bigMeta);
+    printf("\n");
+
     // Print the game
     displayMeta(meta);
     // Changement de joueur
@@ -73,12 +80,9 @@ int main(int argc, char const *argv[])
     while (isFinished(meta[play])) play++; // Increase while the current box is full
     metaBox = play; // Save coords of next box to play
 
-    // Print the summary
-    printf("\n");
-    printf("Summary: ");
-    display(bigMeta);
-    printf("\n");
     count++;
+    system("clear");
+
 
   } while (!isWin(bigMeta, player) && !isFinished(bigMeta) && count < 9 * 9); // Game continue while no player win or the meta is not full
 
